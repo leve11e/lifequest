@@ -4,121 +4,598 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>LifeQuest Support</title>
+  <meta
+    name="description"
+    content="LifeQuest transforms goals, habits, fitness, and productivity into an RPG-inspired journey."
+  />
+
+  <title>LifeQuest — Become a Better Version of Yourself</title>
 
   <style>
+    :root {
+      --background: #090806;
+      --surface: #15120d;
+      --surface-light: #1d1912;
+      --gold: #d6ab55;
+      --gold-light: #f1d18b;
+      --text: #f4ecdc;
+      --muted: #b8ae9b;
+      --border: rgba(214, 171, 85, 0.32);
+      --green: #4aaa68;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #12100c;
-      color: #f3ead7;
-      line-height: 1.6;
-    }
-
-    .container {
-      width: min(900px, 90%);
-      margin: 0 auto;
-      padding: 50px 0;
-    }
-
-    h1,
-    h2 {
-      color: #d8b56a;
-    }
-
-    .hero {
-      text-align: center;
-      padding-bottom: 30px;
-      border-bottom: 1px solid #5a4a2e;
-    }
-
-    .section {
-      margin-top: 40px;
-      padding: 25px;
-      background: #1d1913;
-      border: 1px solid #5a4a2e;
-      border-radius: 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top, #21190d 0%, #0d0a07 34%, #090806 70%);
+      color: var(--text);
+      line-height: 1.7;
     }
 
     a {
-      color: #e1c27d;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: 0 auto;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(9, 8, 6, 0.94);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      color: var(--gold-light);
+      font-size: 1.4rem;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-light);
+    }
+
+    .hero {
+      min-height: 82vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      padding: 100px 0 80px;
+    }
+
+    .hero-content {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      font-family: Arial, sans-serif;
+      font-size: 0.78rem;
+      font-weight: bold;
+    }
+
+    h1 {
+      margin: 18px 0 12px;
+      color: var(--gold-light);
+      font-size: clamp(3rem, 9vw, 6.5rem);
+      line-height: 1;
+      letter-spacing: 0.05em;
+      text-shadow: 0 0 32px rgba(214, 171, 85, 0.18);
+    }
+
+    .tagline {
+      margin: 0;
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      color: var(--text);
+    }
+
+    .hero-description {
+      max-width: 720px;
+      margin: 24px auto 34px;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 1.08rem;
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 24px;
+      border-radius: 7px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
+    .button-primary {
+      color: #120e08;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      border: 1px solid var(--gold-light);
+    }
+
+    .button-secondary {
+      color: var(--gold-light);
+      background: transparent;
+      border: 1px solid var(--border);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    section {
+      padding: 85px 0;
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin: 0 auto 44px;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin: 10px 0 12px;
+      color: var(--gold-light);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+    }
+
+    .about-panel,
+    .support-panel {
+      padding: 42px;
+      background: linear-gradient(
+        145deg,
+        rgba(29, 25, 18, 0.98),
+        rgba(16, 14, 10, 0.98)
+      );
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.25);
+    }
+
+    .about-panel p,
+    .support-panel p {
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 1.05rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .feature-card {
+      min-height: 230px;
+      padding: 28px;
+      background: linear-gradient(160deg, var(--surface-light), var(--surface));
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: 0.2s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(214, 171, 85, 0.7);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+    }
+
+    .feature-card h3 {
+      margin: 15px 0 10px;
+      color: var(--gold-light);
+      font-size: 1.35rem;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+    }
+
+    .faq-list {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    details {
+      margin-bottom: 14px;
+      padding: 18px 22px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+    }
+
+    summary {
+      color: var(--gold-light);
+      cursor: pointer;
+      font-size: 1.08rem;
+      font-weight: bold;
+    }
+
+    details p {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+    }
+
+    .support-panel {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .support-email {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--gold-light);
+      font-family: Arial, sans-serif;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    .status-note {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 7px 12px;
+      color: #b9e6c3;
+      background: rgba(74, 170, 104, 0.12);
+      border: 1px solid rgba(74, 170, 104, 0.35);
+      border-radius: 999px;
+      font-family: Arial, sans-serif;
+      font-size: 0.85rem;
     }
 
     footer {
+      padding: 45px 0;
       text-align: center;
-      margin-top: 50px;
-      color: #aaa08d;
-      font-size: 14px;
+      background: #070604;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-brand {
+      color: var(--gold-light);
+      font-size: 1.35rem;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+    }
+
+    .footer-links {
+      margin: 18px 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 0.92rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold-light);
+    }
+
+    .copyright {
+      color: #847c6e;
+      font-family: Arial, sans-serif;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 850px) {
+      .feature-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .nav-inner {
+        padding: 14px 0;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-panel,
+      .support-panel {
+        padding: 28px 22px;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+
+      .nav-links {
+        gap: 13px;
+        font-size: 0.85rem;
+      }
     }
   </style>
 </head>
 
 <body>
-  <main class="container">
-    <section class="hero">
-      <h1>LifeQuest Support</h1>
+  <nav>
+    <div class="container nav-inner">
+      <a class="brand" href="#home">LIFEQUEST</a>
 
-      <p>
-        LifeQuest transforms personal goals, habits, fitness, and productivity
-        into an RPG-inspired journey.
-      </p>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#faq">FAQ</a>
+        <a href="#support">Support</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <p class="eyebrow">Your journey begins here</p>
+
+        <h1>LIFEQUEST</h1>
+
+        <p class="tagline">Become a Better Version of Yourself.</p>
+
+        <p class="hero-description">
+          Transform your goals, habits, fitness, and productivity into an
+          RPG-inspired journey where every completed quest represents
+          meaningful progress in the real world.
+        </p>
+
+        <div class="button-row">
+          <a class="button button-primary" href="#features">
+            Explore LifeQuest
+          </a>
+
+          <a class="button button-secondary" href="#support">
+            Contact Support
+          </a>
+        </div>
+      </div>
     </section>
 
-    <section class="section">
-      <h2>Contact Support</h2>
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">The path ahead</p>
+          <h2>What is LifeQuest?</h2>
+        </div>
 
-      <p>
-        For assistance, bug reports, or feedback, contact:
-      </p>
+        <div class="about-panel">
+          <p>
+            LifeQuest transforms ordinary productivity into an immersive
+            personal-development adventure. Complete daily and weekly quests,
+            strengthen your habits, improve your fitness, record your journey,
+            and gain experience as you progress.
+          </p>
 
-      <p>
-        <a href="mailto:lifequest1286@gmail.com">
-          lifequest1286@gmail.com
-        </a>
-      </p>
+          <p>
+            Whether your goal is to build discipline, improve your health, or
+            become more consistent, LifeQuest helps turn long-term ambitions
+            into achievable daily victories.
+          </p>
+        </div>
+      </div>
     </section>
 
-    <section class="section">
-      <h2>Frequently Asked Questions</h2>
+    <section id="features">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Forge your path</p>
+          <h2>Core Features</h2>
 
-      <h3>Where is my LifeQuest data stored?</h3>
+          <p>
+            Tools designed to make personal growth feel purposeful,
+            measurable, and rewarding.
+          </p>
+        </div>
 
-      <p>
-        LifeQuest currently stores app data locally on your device.
-      </p>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon">⚔️</div>
+            <h3>Daily & Weekly Quests</h3>
+            <p>
+              Transform goals and responsibilities into structured quests that
+              guide your daily progress.
+            </p>
+          </article>
 
-      <h3>Do I need an account?</h3>
+          <article class="feature-card">
+            <div class="feature-icon">⭐</div>
+            <h3>Character Progression</h3>
+            <p>
+              Earn experience, build momentum, and watch your LifeQuest journey
+              develop over time.
+            </p>
+          </article>
 
-      <p>
-        No. The current version of LifeQuest does not require an online account.
-      </p>
+          <article class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Progress Statistics</h3>
+            <p>
+              Review meaningful progress across the areas of life you are
+              actively working to improve.
+            </p>
+          </article>
 
-      <h3>What happens if I delete the app?</h3>
+          <article class="feature-card">
+            <div class="feature-icon">📖</div>
+            <h3>Personal Journal</h3>
+            <p>
+              Record victories, setbacks, lessons, and reflections throughout
+              your journey.
+            </p>
+          </article>
 
-      <p>
-        Locally stored progress may be removed when the app is deleted.
-      </p>
+          <article class="feature-card">
+            <div class="feature-icon">❤️</div>
+            <h3>Recovery Mode</h3>
+            <p>
+              Shift toward restorative quests when illness, fatigue, or low
+              motivation makes recovery the priority.
+            </p>
+          </article>
 
-      <h3>How do I report a problem?</h3>
-
-      <p>
-        Send an email with a description of the issue, your device model, and
-        the version of iOS you are using.
-      </p>
+          <article class="feature-card">
+            <div class="feature-icon">🏋️</div>
+            <h3>Fitness Assessment</h3>
+            <p>
+              Establish a fitness tier and measure physical progress through
+              structured assessments.
+            </p>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <section class="section">
-      <h2>Privacy</h2>
+    <section id="faq">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Knowledge from the archives</p>
+          <h2>Frequently Asked Questions</h2>
+        </div>
 
-      <p>
-        LifeQuest does not currently require an account or cloud storage.
-        User progress is stored locally on the device.
-      </p>
+        <div class="faq-list">
+          <details>
+            <summary>Does LifeQuest require an account?</summary>
+            <p>
+              No. The current version of LifeQuest does not require an online
+              account.
+            </p>
+          </details>
+
+          <details>
+            <summary>Where is my LifeQuest data stored?</summary>
+            <p>
+              The current version stores progress locally on your device.
+            </p>
+          </details>
+
+          <details>
+            <summary>What happens if I delete the app?</summary>
+            <p>
+              Deleting the app may permanently remove locally stored LifeQuest
+              progress from that device.
+            </p>
+          </details>
+
+          <details>
+            <summary>How do I report a bug?</summary>
+            <p>
+              Contact support and include a description of the problem, your
+              iPhone model, your iOS version, and the steps that caused the
+              issue.
+            </p>
+          </details>
+
+          <details>
+            <summary>Is LifeQuest medical or fitness advice?</summary>
+            <p>
+              No. LifeQuest is a productivity and personal-development tool and
+              is not a substitute for professional medical or fitness advice.
+            </p>
+          </details>
+        </div>
+      </div>
     </section>
 
-    <footer>
-      © 2026 Lukas Carter. All rights reserved.
-    </footer>
+    <section id="support">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Send word to the kingdom</p>
+          <h2>LifeQuest Support</h2>
+        </div>
+
+        <div class="support-panel">
+          <p>
+            For technical support, bug reports, questions, or feedback, contact
+            the LifeQuest developer using the email below.
+          </p>
+
+          <a
+            class="support-email"
+            href="mailto:lifequest1286@gmail.com"
+          >
+            lifequest1286@gmail.com
+          </a>
+
+          <br />
+
+          <span class="status-note">
+            Support page active
+          </span>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-brand">LIFEQUEST</div>
+
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#support">Support</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+      </div>
+
+      <div class="copyright">
+        © 2026 Lukas Carter. All rights reserved.
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
